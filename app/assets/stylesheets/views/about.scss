@@ -1,0 +1,24 @@
+.about {
+  .background {
+    background-image: asset-url("light-painting.jpg");
+    height: 100vh;
+    width: 100%;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .text-container {
+    max-height: 80vh;
+    max-width: 30%;
+    color: white;
+    opacity: 0.5;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
