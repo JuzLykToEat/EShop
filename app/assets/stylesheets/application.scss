@@ -1,0 +1,9 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+
+@import "views/*";
+
+body {
+  font-family: 'Verdana', sans-serif;
+}
