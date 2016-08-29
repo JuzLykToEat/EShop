@@ -1,7 +1,7 @@
 .about {
   .background {
     background-image: asset-url("light-painting.jpg");
-    height: 100vh;
+    height: 95vh;
     width: 100%;
     background-position: 50% 50%;
     background-repeat: no-repeat;
@@ -14,6 +14,7 @@
   .text-container {
     max-height: 80vh;
     max-width: 30%;
+    margin: auto, auto;
     color: white;
     opacity: 0.5;
     position: absolute;
