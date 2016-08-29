@@ -1,0 +1,30 @@
+#header {
+  height: 52px;
+  z-index: 1;
+}
+
+.navbar {
+  margin-bottom: 0;
+}
+
+.navbar-default .navbar-nav > li > a {
+    color: white;
+}
+
+.navbar-default .navbar-brand {
+  color: #fbfbfb;
+}
+
+.navbar-default {
+  background-color: black;
+  border-color: black;
+}
+
+.navbar-default .navbar-toggle {
+  background-color: black;
+  border-color: white;
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+  background-color: white;
+}
