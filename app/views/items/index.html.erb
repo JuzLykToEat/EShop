@@ -1,0 +1,55 @@
+<%= form_for(@item, url: items_path, html: { id: "item-show-form" }) do |f| %>
+  <div class="item-container">
+    <div class="item-item">
+    </div>
+
+    <div class="item-item">
+      <div class="form-group">
+        <h3><%= f.label :title_field, @item.name %> </h3>
+      </div>
+      <div class="">
+        <span class="glyphicon glyphicon-search" aria-hidden="true">
+      </div>
+      <div class="form-group">
+        <h4> <%=  @item.description %> </h4>
+      </div>
+
+      <div class="form-group">
+        <h6>In Stock:  <%= f.label :text_field, @item.quantity%> </h6>
+      </div>
+
+      <div class="form-group">
+        <h6>Quantity: </h6><h6><%= f.text_field :quantity, class: 'form-control quantity ' %><h6>
+      </div>
+
+      <div class="form-group">
+        <h4> Price: RM <%= @item.price %> </h4>
+      </div>
+
+      <div class="form-group">
+        <%= f.submit "Buy Now", class: "btn btn-success btn-lg" %>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+
+<div class="additional-info">
+
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs nav-justified" role="tablist">
+    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Information</a></li>
+    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Payments</a></li>
+    <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Shipping</a></li>
+    <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Returns</a></li>
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content nav-justified">
+    <div role="tabpanel" class="tab-pane active" id="home">THere sis something else here</div>
+    <div role="tabpanel" class="tab-pane" id="profile">AThis is the profile</div>
+    <div role="tabpanel" class="tab-pane" id="messages">This is the messages</div>
+    <div role="tabpanel" class="tab-pane" id="settings">This is the settings</div>
+  </div>
+
+</div>

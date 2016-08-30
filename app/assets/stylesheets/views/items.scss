@@ -1,0 +1,25 @@
+
+.item-container{
+  text-emphasis-color: white;
+  display: flex;
+  // flex-wrap: wrap;
+  justify-content:space-around;
+  background-color: #d9d9d9;
+  border-radius: 9px;
+  margin: 20px;
+  // max-width:1200px;
+}
+
+.item-item{
+  flex: 0 0 50%;
+  position: relative;
+}
+
+.quantity{
+  width: 45px;
+}
+
+.additional-info{
+    margin: 20px;
+    background-color:#f2f2f2;
+}
