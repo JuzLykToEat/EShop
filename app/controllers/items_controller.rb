@@ -5,7 +5,7 @@ class ItemsController < ApplicationController
   end
 
   def index
-    @item = Item.new(name: "a", description: "desc", price: 20.8, quantity: 4)
+    @item = Item.new(name: "iFon 9F", description: "This is the latest IFON", price: 2000.80, quantity: 20)
   end
 
   def add
