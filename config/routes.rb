@@ -3,5 +3,10 @@ Rails.application.routes.draw do
   get :about, to: 'static_pages#about'
   root to: "landing#index"
 
+
   resources :items , only: [:index, :show,:delete, :add, :edit, :destroy]
+
+  resources :users, only: [:new, :edit, :create, :update]
+  resources :sessions, only: [:new, :create, :destroy]
+
 end
