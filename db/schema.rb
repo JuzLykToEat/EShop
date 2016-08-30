@@ -10,12 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160829091708) do
-
+ActiveRecord::Schema.define(version: 20160830083619) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
 
   create_table "items", force: :cascade do |t|
     t.string   "name"
@@ -27,6 +25,27 @@ ActiveRecord::Schema.define(version: 20160829091708) do
     t.string   "image"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+  end
+
+  create_table "ordered_items", force: :cascade do |t|
+    t.integer  "item_id"
+    t.integer  "order_id"
+    t.integer  "quantity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["item_id"], name: "index_ordered_items_on_item_id", using: :btree
+    t.index ["order_id"], name: "index_ordered_items_on_order_id", using: :btree
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.integer  "ordereditem_id"
+    t.integer  "user_id"
+    t.float    "total"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["ordereditem_id"], name: "index_orders_on_ordereditem_id", using: :btree
+    t.index ["user_id"], name: "index_orders_on_user_id", using: :btree
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email"
@@ -38,7 +57,6 @@ ActiveRecord::Schema.define(version: 20160829091708) do
     t.datetime "password_reset_at"
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
-
   end
 
 end
