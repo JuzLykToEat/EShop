@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>EShop</title>
+    <title>DayShop</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -12,6 +13,7 @@
     <div id="header">
       <%= render partial: 'partials/header' %>
     </div>
+    <%= render partial: "partials/flash_messages" %>
     <%= yield %>
   </body>
 </html>
