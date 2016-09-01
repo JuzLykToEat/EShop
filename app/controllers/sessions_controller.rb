@@ -7,7 +7,6 @@ class SessionsController < ApplicationController
     user = User.find_by(email: user_params[:email])
                &.authenticate(user_params[:password])
 
-    user = User.from_omniauth(env["omniauth.auth"])           
     if user
       session[:id] = user.id
       flash[:success] = "Welcome back #{current_user.username}"
@@ -16,7 +15,6 @@ class SessionsController < ApplicationController
       flash[:danger] = "Error logging in"
       render :new
     end
-
   end
 
   def destroy
