@@ -16,4 +16,7 @@ Rails.application.routes.draw do
   post :add, to: 'carts#add'
   post :remove, to: 'carts#remove'
 
+  match 'auth/:provider/callback', to: 'omniauth#create', via: [:get, :post]
+  match 'auth/failure', to: redirect('/'), via: [:get, :post]
+  match 'signout', to: 'omniauth#destroy', as: 'signout', via: [:get, :post]
 end

@@ -1,7 +1,7 @@
 class User < ApplicationRecord
 
   has_many :orders
-  
+
   has_secure_password
   enum role: [:user, :moderator, :admin]
 
