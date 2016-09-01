@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   end
 
   private
-
+  
   def current_user
     return unless session[:id]
     @current_user ||= User.find_by(id: session[:id])

@@ -8,20 +8,8 @@ class ItemsController < ApplicationController
     @items = Item.all
   end
 
-  def add
-    @item = Item.new(item_params)
-  end
-
-  def edit
-
-  end
-
-  def destroy
-
-  end
-
   def update
-
+    
   end
 
   private
