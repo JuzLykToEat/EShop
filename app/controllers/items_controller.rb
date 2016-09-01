@@ -5,23 +5,11 @@ class ItemsController < ApplicationController
   end
 
   def index
-    @item = Item.new(name: "iFon 9F", description: "This is the latest IFON", price: 2000.80, quantity: 20)
-  end
-
-  def add
-    @item = Item.new(item_params)
-  end
-
-  def edit
-
-  end
-
-  def destroy
-
+    @items = Item.all
   end
 
   def update
-
+    
   end
 
   private

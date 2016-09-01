@@ -27,6 +27,26 @@ ActiveRecord::Schema.define(version: 20160901064106) do
     t.datetime "updated_at",  null: false
   end
 
+  create_table "ordered_items", force: :cascade do |t|
+    t.integer  "item_id"
+    t.integer  "order_id"
+    t.integer  "quantity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["item_id"], name: "index_ordered_items_on_item_id", using: :btree
+    t.index ["order_id"], name: "index_ordered_items_on_order_id", using: :btree
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.integer  "ordereditem_id"
+    t.integer  "user_id"
+    t.float    "total"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["ordereditem_id"], name: "index_orders_on_ordereditem_id", using: :btree
+    t.index ["user_id"], name: "index_orders_on_user_id", using: :btree
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "email"
     t.string   "password_digest"
