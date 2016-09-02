@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :ordered_items, only: [:add, :create]
 
   resources :carts, only: [:add, :show, :remove]
+  resources :checkouts, only: [:new, :create]
 
   post :add, to: 'carts#add'
   post :remove, to: 'carts#remove'
