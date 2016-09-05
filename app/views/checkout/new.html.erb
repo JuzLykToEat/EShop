@@ -1,20 +1,18 @@
-<header>
-  <h1>Hi, <br>Let's test a transaction</h1>
-  <p>
-    Make a test payment with Braintree using PayPal or a card
-  </p>
-</header>
+<div class="form">
+  <header>
+    <h1>Hi, <br>Let's pay for the stuffs you want.</h1>
+    <p>
+      Give me all your money!
+    </p>
+  </header>
 
-<%= form_tag("/checkouts", method: "post", id: "payment-form") do %>
-  <section>
-    <div class="bt-drop-in-wrapper">
-      <div id="bt-dropin"></div>
+  <%= form_for(:payment, url: checkouts_path, html: { id: "payment-form" }) do |f| %>
+    <div class="form-group", id="dropin-container">
+
     </div>
 
-    <label for="amount">
-      <span class="input-label">Amount</span>
-      <div class="input-wrapper amount-wrapper">
-        <input id="amount" name="amount" type="tel" min="1" placeholder="Amount" value="10">
-      </div>
-    </label>
-  </section>
+    <div class="form-group">
+      <%= f.submit "Pay", class: "btn btn-success btn-lg" %>
+    </div>
+  <% end %>
+</div>

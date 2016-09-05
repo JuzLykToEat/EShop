@@ -5,11 +5,11 @@ class CartsController < ApplicationController
     items = JSON.parse(cookies[:cart])
     total_price = 0.0;
     @items = []
-    items.each do |k,v|
-      item = Item.find_by(id: k)
+    items.each do |product_id, quantity|
+      item = Item.find_by(id: product_id)
 
-      item.define_singleton_method(:quantities) { v }
-      total_price += item.price * v.to_f
+      item.define_singleton_method(:quantities) { quantity }
+      total_price += item.price * quantity.to_f
       @items << item
     end
 
