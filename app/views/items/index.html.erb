@@ -1,26 +1,30 @@
-
 <div class="all-items">
+  <div class="column text-center">
+    <%= form_tag("/items", method: "get") do %>
+      <%= label_tag(:search, "Search for:") %>
+      <%= text_field_tag(:search) %>
+      <%= submit_tag("Search") %>
+    <% end %>
 
-<div class="column text-center">
-<%@items.each do |a| %>
+    <%@items.each do |a| %>
 
-  <div class="col-sm-3 col-md-4">
-    <div class="thumbnail">
-      <% if a.image? %>
-        <%= image_tag a.image, class: "img-settings img-responsive center-block" %>
-      <% else %>
-        <img src="..." alt="...">
-      <% end %>
-      <div class="caption">
-        <h3><%=link_to a.name, item_path(a.id)%></h3>
-        <p><%=a.description%></p>
-        <h5><b>RM<%=sprintf('%.2f', a.price)%></b></h5>
-        <p><a href="<%=item_path(a.id)%>" class="btn btn-default" role="button"><%=fa_icon("shopping-cart 1x")%></a>
-          <a href="<%=item_path(a.id)%>" class="btn btn-primary" role="button">View</a> </p>
+      <div class="col-sm-3 col-md-4">
+        <div class="thumbnail">
+          <% if a.image? %>
+            <%= image_tag a.image, class: "img-settings img-responsive center-block" %>
+          <% else %>
+            <img src="..." alt="...">
+          <% end %>
+          <div class="caption">
+            <h3><%=link_to a.name, item_path(a.id)%></h3>
+            <p><%=a.description%></p>
+            <h5><b>RM<%=sprintf('%.2f', a.price)%></b></h5>
+            <p><a href="<%=item_path(a.id)%>" class="btn btn-default" role="button"><%=fa_icon("shopping-cart 1x")%></a>
+              <a href="<%=item_path(a.id)%>" class="btn btn-primary" role="button">View</a> </p>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
 
-<%end%>
-</div>
+    <%end%>
+  </div>
 </div>
