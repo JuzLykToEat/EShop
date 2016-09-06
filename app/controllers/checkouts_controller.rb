@@ -1,5 +1,5 @@
 class CheckoutsController < ApplicationController
-  before_action :get_total_price
+  before_action :get_total_price, :authenticate!
 
   def new
     @client_token = Braintree::ClientToken.generate
@@ -14,7 +14,20 @@ class CheckoutsController < ApplicationController
       }
     )
 
-    binding.pry
+    if result.success?
+      order = current_user.orders.create(total: result.transaction.amount)
+
+      @items.each do |item|
+        order.ordered_items.create(item_id: item.id, quantity: item.quantities)
+        cookies.delete(:cart)
+      end
+      flash[:success] = "Paid!"
+      redirect_to root_path
+    else
+      flash[:danger] = "Payment failed!"
+      redirect_to root_path
+    end
+
   end
 
 

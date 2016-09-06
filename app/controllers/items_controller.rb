@@ -5,11 +5,15 @@ class ItemsController < ApplicationController
   end
 
   def index
-    @items = Item.all
+    if params[:search] && params[:search].present?
+      @items = Item.search params[:search]
+    else
+      @items = Item.all
+    end
   end
 
   def update
-    
+
   end
 
   private
