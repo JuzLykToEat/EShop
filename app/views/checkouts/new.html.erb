@@ -1,0 +1,34 @@
+<div class="form">
+  <%= form_for(:payment, url: checkouts_path, html: { id: "payment-form" }) do |f| %>
+    <div class="form-group">
+      <header>
+        <h1>Hi, let's pay for the stuffs you want.</h1>
+        <p>
+          Give me all your money!
+        </p>
+      </header>
+    </div>
+
+    <div class="form-group", id="dropin-container">
+    </div>
+
+    <div class="form-group">
+      <h4>Amount: RM<%= @total_price %></h4>
+    </div>
+
+    <div class="form-group">
+      <%= f.submit "Pay", class: "btn btn-success btn-lg" %>
+    </div>
+  <% end %>
+</div>
+
+<!-- <div class="hidden" id="bt-token">
+  <%= @client_token %>
+</div> -->
+
+<script>
+  braintree.setup("<%=@client_token%>", 'dropin', {
+    container: 'dropin-container',
+    form: 'payment-form'
+  });
+</script>
