@@ -1,0 +1,16 @@
+<%@items.each do |item| %>
+
+  <h5>
+    <%=item.quantity%>
+    <%=item.quantities%>
+    <%=item.name%>
+    <%=item.description%>
+    <%=item.price%>
+  </h5>
+
+<%end%>
+<%=@total_price%>
+
+<a class="button primary back" href="/checkouts/new">
+  <span>CHECKOUT</span>
+</a>

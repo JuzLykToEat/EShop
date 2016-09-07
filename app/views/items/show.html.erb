@@ -1,6 +1,9 @@
 <%=form_for(:cart, url: add_path(item_id: @item.id), method: :post, html: { id: "item-show-form" }) do |f| %>
   <div class="well item-container">
     <div class="item-item">
+      <% if @item.image? %>
+        <%= image_tag @item.image, class: "img-settings img-responsive center-block" %>
+      <% end %>
     </div>
 
     <div class="item-item">

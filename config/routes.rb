@@ -10,8 +10,12 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :edit, :create, :update]
   resources :sessions, only: [:new, :create, :destroy]
   resources :ordered_items, only: [:add, :create]
+
   resources :orders, only: [:create]
-  resources :carts, only: [:index, :add, :edit, :remove]
+  resources :carts, only: [:index, :add, :show :edit, :remove]
+
+  resources :checkouts, only: [:new, :create]
+
 
   post :add, to: 'carts#add'
   post :remove, to: 'carts#remove'

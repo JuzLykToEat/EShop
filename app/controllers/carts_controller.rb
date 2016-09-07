@@ -23,6 +23,7 @@ class CartsController < ApplicationController
 
       item.define_singleton_method(:quantities) { v }
       item.define_singleton_method(:subprice) {subprice}
+
       @items << item
     end
 
