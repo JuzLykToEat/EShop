@@ -1,0 +1,36 @@
+
+<%@items.each do |item| %>
+
+<div class="well well-sm" style="margin:2vh">
+
+
+  <h5>
+    <%=item.quantity%>
+    <%=item.quantities%>
+    <%=item.name%>
+    <%=item.description%>
+    <%=sprintf('%.2f', item.price)%>
+    <%=item.subprice%>
+
+
+    <%=form_for(:cart, url: edit_cart_path(id: item.id), method: :post, html: { id: "item-show-form" }) do |f| %>
+      <div class="form-group">
+
+        <h6>Quantity: <%= f.text_field :quantity, value:item.quantities, class: 'form-control quantity ' %>
+
+        <%= f.submit "EDIT" %><h6>
+
+      </div>
+    <%end%>
+    <%=link_to "X", remove_path(id: item.id), method: :post, data: {confirm: "Are you sure you want to remove #{item.name}?"}%>
+  </h5>
+</div>
+<%end%>
+
+  <div class="well well-sm" style="margin:2vh; text-align:right">
+    TOTAL: <%=@total_price%>
+  </div>
+
+  <div  style="margin:2vh; text-align:right">
+    <%=link_to "Checkout", orders_path, method: :post, class:"btn btn-lg success"%>
+  </div>

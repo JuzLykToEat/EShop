@@ -1,19 +1,33 @@
 class CartsController < ApplicationController
   respond_to :js
 
-  def show
+  def index
+    get_cart
+
+    rescue => e
+      flash[:danger] = "Your cart is empty, add some items first!"
+      redirect_to root_path
+  end
+
+  def get_cart
     items = JSON.parse(cookies[:cart])
-    total_price = 0.0;
+    total_price= 0.0;
     @items = []
+
     items.each do |k,v|
       item = Item.find_by(id: k)
 
+      subprice =0.0;
+      subprice = item.price * v.to_f
+      total_price += subprice
+
       item.define_singleton_method(:quantities) { v }
-      total_price += item.price * v.to_f
+      item.define_singleton_method(:subprice) {subprice}
       @items << item
     end
 
     total_price(total_price)
+    return @items
   end
 
   def add
@@ -27,10 +41,22 @@ class CartsController < ApplicationController
     cookies[:cart] = JSON.generate(items)
   end
 
-  def remove
+  def edit
 
   end
 
+  def remove
+    @items = JSON.parse(cookies[:cart])
+    @items.delete(params[:id])
+
+    if @items.empty?
+      cookies.delete :cart
+    else
+      cookies[:cart] = JSON.generate(@items)
+    end
+    flash[:success] = "REMOVED items"
+    redirect_to carts_path
+  end
 
   private
   def cart_params
