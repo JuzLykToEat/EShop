@@ -7,7 +7,6 @@
     <% end %>
 
     <%@items.each do |a| %>
-
       <div class="col-sm-3 col-md-4">
         <div class="thumbnail">
           <% if a.image? %>
@@ -19,10 +18,11 @@
             <h3><%=link_to a.name, item_path(a.id)%></h3>
             <p><%=a.description%></p>
             <h5><b>RM<%=sprintf('%.2f', a.price)%></b></h5>
-            <p><a href="<%=item_path(a.id)%>" class="btn btn-default" role="button"><%=fa_icon("shopping-cart 1x")%></a>
+            <p><%=link_to fa_icon("shopping-cart 1x"), add_path(item_id: a.id, cart:{quantity: 1}), method: :post, class: "btn btn-default" %>
               <a href="<%=item_path(a.id)%>" class="btn btn-primary" role="button">View</a> </p>
           </div>
         </div>
+
       </div>
 
     <%end%>

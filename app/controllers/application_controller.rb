@@ -4,17 +4,17 @@ class ApplicationController < ActionController::Base
 
   rescue_from Pundit::NotAuthorizedError do |exception|
     flash[:danger] = "You're not authorized"
-    redirect_to request.referrer || root_path
+    redirect_to request.referrer || main_app.root_path
   end
 
-  private
-  
+
+
   def current_user
     return unless session[:id]
     @current_user ||= User.find_by(id: session[:id])
   end
   helper_method :current_user
-
+  private
   def authenticate!
     unless current_user
       redirect_to root_path

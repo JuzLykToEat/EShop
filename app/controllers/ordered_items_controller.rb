@@ -1,11 +1,7 @@
 class OrderedItemsController < ApplicationController
 
   def create
-    @cart = OrderedItems.new(cart_params.merge(params[:item_id]))
 
-  end
-
-  def index
 
   end
 
