@@ -7,8 +7,6 @@ class ApplicationController < ActionController::Base
     redirect_to request.referrer || main_app.root_path
   end
 
-
-
   def current_user
     return unless session[:id]
     @current_user ||= User.find_by(id: session[:id])
@@ -21,4 +19,5 @@ class ApplicationController < ActionController::Base
       flash[:danger] = "You need to login first"
     end
   end
+  
 end
