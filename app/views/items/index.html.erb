@@ -1,10 +1,25 @@
 <div class="all-items">
-  <div class="column text-center">
-    <%= form_tag("/items", method: "get") do %>
-      <%= label_tag(:search, "Search for:") %>
-      <%= text_field_tag(:search) %>
-      <%= submit_tag("Search") %>
-    <% end %>
+      <%= form_tag("/items", method: "get", class: "search-bar text-center") do %>
+        <%= label_tag(:search, "Search for:") %>
+        <%= text_field_tag(:search) %>
+        <div class="dropdown">
+          <button id="Categories_dropdown" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Category
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="Categories_dropdown">
+            <li><%= check_box_tag(:'category[]', "T-Shirt") %>
+            <%= label_tag("T-Shirt") %></li>
+            <li role="separator" class="divider"></li>
+            <li><%= check_box_tag(:'category[]', "Jacket") %>
+            <%= label_tag("Jacket") %></li>
+            <li role="separator" class="divider"></li>
+            <li><%= check_box_tag(:'category[]', "Cap") %>
+            <%= label_tag("Cap") %></li>
+          </ul>
+        </div>
+        <%= submit_tag("Search") %>
+      <% end %>
 
     <%@items.each do |a| %>
 
@@ -26,5 +41,4 @@
       </div>
 
     <%end%>
-  </div>
 </div>
