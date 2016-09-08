@@ -19,6 +19,9 @@
         <li><a href="/items">Shop</a></li>
 
         <% if current_user %>
+          <% if current_user.admin? %>
+            <li><%= link_to "Admin", rails_admin_path, class: 'white shadowed link-styling' %></li>
+          <% end %>
           <li><%= link_to "#{current_user.username}", edit_user_path(current_user), class: 'white shadowed link-styling' %></li>
           <li><%= link_to "Log-out", session_path(current_user), method: :Delete, class: 'white shadowed link-styling' %></li>
         <% else %>

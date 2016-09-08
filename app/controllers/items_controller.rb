@@ -5,10 +5,14 @@ class ItemsController < ApplicationController
   end
 
   def index
+    params[:category] ||= ["T-Shirt", "Jacket", "Cap", ""]
+
     if params[:search] && params[:search].present?
-      @items = Item.search params[:search]
+      @items = Item.search params[:search], where: {
+        category: params[:category] # ["fun", "studying"]
+      }
     else
-      @items = Item.all
+      @items = Item.where(category: params[:category])
     end
   end
 
