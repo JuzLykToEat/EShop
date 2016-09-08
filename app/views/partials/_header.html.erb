@@ -25,8 +25,8 @@
           <li><%= link_to "#{current_user.username}", edit_user_path(current_user), class: 'white shadowed link-styling' %></li>
           <li><%= link_to "Log-out", session_path(current_user), method: :Delete, class: 'white shadowed link-styling' %></li>
         <% else %>
-          <li><%= link_to "Register", new_user_path %></li>
-          <li><%= link_to "Log-in", new_session_path %></li>
+          <li><a class="pressable" data-toggle="modal" data-target="#register">Register</a></li>
+          <li><a class="pressable" data-toggle="modal" data-target="#log-in">Log-in</a></li>
         <% end %>
 
       </ul>
