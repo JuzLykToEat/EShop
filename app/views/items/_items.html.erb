@@ -1,0 +1,18 @@
+<% items.each do |item| %>
+  <div class="col-sm-3 col-md-4">
+    <div class="thumbnail">
+      <% if item.image? %>
+        <%= image_tag item.image, class: "img-settings img-responsive center-block" %>
+      <% else %>
+        <img src="..." alt="...">
+      <% end %>
+      <div class="caption">
+        <h3><%=link_to item.name, item_path(item.id)%></h3>
+        <p><%=item.description%></p>
+        <h5><b>RM<%=sprintf('%.2f', item.price)%></b></h5>
+        <p><%=link_to fa_icon("shopping-cart 1x"), add_path(item_id: item.id, cart:{quantity: 1}), method: :post, class: "btn btn-default" %>
+          <a href="<%=item_path(item.id)%>" class="btn btn-primary" role="button">View</a> </p>
+      </div>
+    </div>
+  </div>
+<% end %>

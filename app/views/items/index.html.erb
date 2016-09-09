@@ -1,44 +1,25 @@
+<%= form_tag("/items", method: "get", remote: true, class: "search-bar text-center") do %>
+  <%= label_tag(:search, "Search for:") %>
+  <%= text_field_tag(:search) %>
+  <div class="dropdown">
+    <button id="Categories_dropdown" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Category
+      <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="Categories_dropdown">
+      <li><%= check_box_tag(:'category[]', "T-Shirt") %>
+      <%= label_tag("T-Shirt") %></li>
+      <li role="separator" class="divider"></li>
+      <li><%= check_box_tag(:'category[]', "Jacket") %>
+      <%= label_tag("Jacket") %></li>
+      <li role="separator" class="divider"></li>
+      <li><%= check_box_tag(:'category[]', "Cap") %>
+      <%= label_tag("Cap") %></li>
+    </ul>
+  </div>
+  <%= submit_tag("Search") %>
+<% end %>
+
 <div class="all-items">
-      <%= form_tag("/items", method: "get", class: "search-bar text-center") do %>
-        <%= label_tag(:search, "Search for:") %>
-        <%= text_field_tag(:search) %>
-        <div class="dropdown">
-          <button id="Categories_dropdown" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Category
-            <span class="caret"></span>
-          </button>
-          <ul class="dropdown-menu" aria-labelledby="Categories_dropdown">
-            <li><%= check_box_tag(:'category[]', "T-Shirt") %>
-            <%= label_tag("T-Shirt") %></li>
-            <li role="separator" class="divider"></li>
-            <li><%= check_box_tag(:'category[]', "Jacket") %>
-            <%= label_tag("Jacket") %></li>
-            <li role="separator" class="divider"></li>
-            <li><%= check_box_tag(:'category[]', "Cap") %>
-            <%= label_tag("Cap") %></li>
-          </ul>
-        </div>
-        <%= submit_tag("Search") %>
-      <% end %>
-
-    <%@items.each do |a| %>
-      <div class="col-sm-3 col-md-4">
-        <div class="thumbnail">
-          <% if a.image? %>
-            <%= image_tag a.image, class: "img-settings img-responsive center-block" %>
-          <% else %>
-            <img src="..." alt="...">
-          <% end %>
-          <div class="caption">
-            <h3><%=link_to a.name, item_path(a.id)%></h3>
-            <p><%=a.description%></p>
-            <h5><b>RM<%=sprintf('%.2f', a.price)%></b></h5>
-            <p><%=link_to fa_icon("shopping-cart 1x"), add_path(item_id: a.id, cart:{quantity: 1}), method: :post, class: "btn btn-default" %>
-              <a href="<%=item_path(a.id)%>" class="btn btn-primary" role="button">View</a> </p>
-          </div>
-        </div>
-
-      </div>
-
-    <%end%>
+  <%= render partial: "items", locals: { items: @items } %>
 </div>
