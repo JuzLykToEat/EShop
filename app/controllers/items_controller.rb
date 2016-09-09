@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+  respond_to :js
 
   def show
     @item = Item.find_by(id: params[:id])
@@ -6,11 +7,9 @@ class ItemsController < ApplicationController
 
   def index
     params[:category] ||= ["T-Shirt", "Jacket", "Cap", ""]
-
     if params[:search] && params[:search].present?
-      @items = Item.search params[:search], where: {
-        category: params[:category] # ["fun", "studying"]
-      }
+      @items = Item.search(params[:search],
+        where: { category: params[:category] })
     else
       @items = Item.where(category: params[:category])
     end
