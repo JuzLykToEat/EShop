@@ -12,8 +12,9 @@
   }
 
   .landing-container {
-    display: flex;
-    justify-content: space-around;
+    display:flex;
+    justify-content: center;
+    align-items: center;
     flex-wrap: wrap;
     width: 100%;
   }
@@ -25,7 +26,7 @@
     border-color: black;
     flex: 0 0 40%;
     margin: auto 5%;
-    min-width: 330px;
+    min-width: 320px;
 
   }
 
@@ -43,22 +44,28 @@
 
   .search-box {
     background-color:rgba(0,0,0,0.65);
+    margin: 10px;
+    min-height: 120px;
 
     .title {
       color: white;
     }
 
     hr {
-    width: 100%;
+    width: 90%;
     border-color: white;
     border-width: 1px;
+    }
+
+    .search-bar {
+      margin: auto;
     }
   }
 
   .right-container {
     flex: 0 0 44%;
     margin: auto 3%;
-    min-width: 330px;
+    min-width: 320px;
 
     .carousel-inner .item img {
       height: 300px;
