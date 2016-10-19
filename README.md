@@ -1,24 +1,21 @@
-# README
+# DayShop
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A E-commerce website built iin MaGIC's Full Stack Web Development Bootcamp.
 
-Things you may want to cover:
+Features of this website:
 
-* Ruby version
+* `User` model with authentication and authorization.
 
-* System dependencies
+* Omniauth implemented for Facebook log-in.
 
-* Configuration
+* `Item` model with categories.
 
-* Database creation
+* `ordered_items` to store items that user bought.
 
-* Database initialization
+* Cart function added to store items for purchase.
 
-* How to run the test suite
+* Payment function added using Braintree.
 
-* Services (job queues, cache servers, search engines, etc.)
+* Elastic search function added to search for items using searchkick.
 
-* Deployment instructions
-
-* ...
+* Admin panel added for admin's ease of control.
